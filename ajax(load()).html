@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<style>
+	.card{
+		width: 400px;
+		display: none;
+	}
+	</style>
+</head>
+<body>
+	<button class="toggles">隐藏/显示</button>
+	<div class="card"></div>
+
+	<form class="search-form">
+		<input class="github-name" type="text">
+		<button type="submit" class="search">查询github用户</button>	
+		<div class="result"></div>
+	</form>
+
+
+	<script>
+		var toggles = $(".toggles");
+		var card = $(".card");
+		var loader = false;
+
+		toggles.on("click", function(){
+			if(card.is(":visible")){
+				card.slideUp();
+			}else{
+				if(!loader){
+					card.load('data(text).html');
+					// $.ajax('https://api.github.com/users/yifandp').done(function(data){
+					// 	console.log('data:',data);
+					// })
+					loader = true;
+				}
+				card.slideDown();
+			}
+
+			// card.load('data(text).html');
+		})
+
+		var search = $(".search-form");
+		var user = $(".github-name");
+		var result = $(".result");
+
+		search.on('submit', function(e){
+			e.preventDefault();
+			$.ajax('https://api.github.com/users/'+user.val()).done(function(data){
+				console.log(data);
+				var html = '<div><p>用户名：'+data.login+'</p><p>介绍：'+(data.bio || '无')+'</p></div>';
+				result.html(html);
+			});
+		})
+	</script>
+</body>
+</html>
