@@ -9,7 +9,57 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+	<div class="wrap wrap-sm">
+		<div class="header">
+			<h1>注册</h1>
+		</div>
+		<div class="form">
+			<form id="signup">
+				<div class="input-wrap">
+					<label>姓名</label>
+					<!-- data-rule='pattern:"^[a-z0-9]$"|max:80|min:18|maxlength:10|minlength:2|required:false|numeric:false' -->
+					<input type="text" name="name" data-rule='maxlength:5|minlength:2'  class="input-control">
+					<div id="name-input-error" class="input-error">
+						姓名格式有误
+					</div>
+				</div>
+				<div class="input-wrap">
+					<label>用户名</label>
+					<input type="text" name="username" data-rule='pattern:"^[a-z0-9]*$"|maxlength:18|minlength:4'  class="input-control">
+					<div id="username-input-error" class="input-error">
+						姓名格式有误
+					</div>
+				</div>
+				<div class="input-wrap">
+					<label>年龄</label>
+					<input type="text" name="age" data-rule='min:18'  class="input-control">
+					<div id="age-input-error" class="input-error">
+						姓名格式有误
+					</div>
+				</div>
+				<div class="input-wrap">
+					<label>密码</label>
+					<input type="password" name="password" data-rule='maxlength:12|minlength:6'  class="input-control">
+					<div id="password-input-error" class="input-error">
+						姓名格式有误
+					</div>
+				</div>
+				<div class="input-wrap">
+					<label>自我介绍</label>
+					<input type="text" name="other" data-rule='maxlength:1024|required:false'  class="input-control">
+					<div id="other-input-error" class="input-error">
+						姓名格式有误
+					</div>
+				</div>
+				<div class="input-wrap">
+					<input class="button-control" type="submit" value="注册">
+				</div>
+			</form>
+		</div>
+	</div>	
 	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/validator.js"></script>
+	<script src="js/input.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>
